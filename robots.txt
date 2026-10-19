@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://shirenschool.github.io/hsinchu-play-fest/sitemap.xml
