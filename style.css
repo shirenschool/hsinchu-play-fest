@@ -500,3 +500,8 @@ body{
 .logo-grid li{justify-content:center;padding:18px 14px;min-height:130px}
 .logo-grid-main li{min-height:170px}
 .logo-text b{height:auto}
+
+/* 首屏右側改為方形亮點插畫：放大一點、少歪一點，讓標籤文字看得清楚 */
+.hero{grid-template-columns:1fr 1fr}
+.hero-poster img{transform:rotate(1deg)}
+@media (max-width:980px){.hero{grid-template-columns:1fr}.hero-poster{max-width:560px}}
