@@ -125,7 +125,7 @@ const SHEET_ID = '1p9QaRXgh4jWC15JXstDckoA6Sv8__j4IwCy6k0thXeo';
         const timeValue = /兩/.test(d) || /（|\(/.test(r['時間']) || !d ? txt(r['時間']) : `${txt(d)} ${txt(r['時間'])}`;
         const btn = link
           ? `<a class="reg" href="${esc(link)}" target="_blank" rel="noopener">立即報名 →</a>`
-          : free ? '<span class="reg reg-free">直接到現場</span>' : '<span class="reg reg-soon">報名連結即將開放</span>';
+          : '<span class="reg reg-soon">報名連結即將開放</span>';
         return `
         <article class="class-card" data-days="${days}"${free ? ' data-free="1"' : ''}>
           <header class="class-top top-${color}">

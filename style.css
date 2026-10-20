@@ -495,3 +495,8 @@ body{
 .top-sky{background:var(--sky);color:#fff}
 .solid-green{background:var(--green);color:#fff}
 .show + .show{margin-top:20px}
+
+/* 夥伴 logo：只放原圖，不加文字 */
+.logo-grid li{justify-content:center;padding:18px 14px;min-height:130px}
+.logo-grid-main li{min-height:170px}
+.logo-text b{height:auto}
