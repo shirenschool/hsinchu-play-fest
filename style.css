@@ -530,3 +530,10 @@ body{
 .line-add img{height:36px}
 .line-btn{display:inline-block;margin-top:16px;background:#fff;color:#06C755;font-weight:900;font-size:16px;text-decoration:none;padding:9px 22px;border-radius:999px;border:2px solid var(--navy);box-shadow:3px 3px 0 var(--navy);transition:transform .15s}
 .line-btn:hover{transform:translate(-1px,-2px)}
+
+/* LINE 按鈕尺寸與位置（第二版） */
+.count-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:20px}
+.count-row .countdown{margin-top:0}
+.line-hero img{height:32px;width:auto}
+.footer-line{margin-top:12px}
+.footer-line .line-add img{height:26px;width:auto}
