@@ -525,3 +525,8 @@ body{
 .line-text .line-add{margin-top:16px;background:#fff;border-radius:8px;padding:4px}
 .line-qr{width:150px;height:150px;background:#fff;border:3px solid var(--navy);border-radius:14px;padding:6px;flex:none}
 @media (max-width:760px){.line-qr{display:none}.line-inner{display:block}}
+
+/* LINE：綠框內改用白色膠囊按鈕；其他位置的官方按鈕維持 LINE 規範高度 */
+.line-add img{height:36px}
+.line-btn{display:inline-block;margin-top:16px;background:#fff;color:#06C755;font-weight:900;font-size:16px;text-decoration:none;padding:9px 22px;border-radius:999px;border:2px solid var(--navy);box-shadow:3px 3px 0 var(--navy);transition:transform .15s}
+.line-btn:hover{transform:translate(-1px,-2px)}
