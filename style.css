@@ -505,3 +505,23 @@ body{
 .hero{grid-template-columns:1fr 1fr}
 .hero-poster img{transform:rotate(1deg)}
 @media (max-width:980px){.hero{grid-template-columns:1fr}.hero-poster{max-width:560px}}
+
+/* 洪新富特展：照片取代幾何插畫 */
+.feature-photo{background:var(--navy);overflow:hidden}
+.feature-photo picture{display:block;width:100%;height:100%}
+.feature-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 35%;display:block}
+@media (max-width:760px){.feature-photo{aspect-ratio:4/3}}
+
+/* LINE 官方帳號 */
+.line-add{display:inline-block;line-height:0;transition:transform .15s}
+.line-add:hover{transform:translateY(-2px)}
+.line-add img{height:44px;width:auto}
+.line-hero{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:14px;font-size:14px;font-weight:700;color:var(--muted)}
+.line-box{max-width:var(--max);margin:0 auto 56px;padding:0 var(--gutter)}
+.line-inner{display:flex;align-items:center;justify-content:space-between;gap:28px;background:#06C755;color:#fff;border:3px solid var(--navy);border-radius:var(--r);box-shadow:var(--sticker);padding:clamp(22px,4vw,40px)}
+.line-kicker{font-weight:900;font-size:14px;letter-spacing:.2em;opacity:.9}
+.line-text h2{font-weight:900;font-size:clamp(24px,3.4vw,34px);line-height:1.3;margin:4px 0 8px}
+.line-text p{max-width:34em}
+.line-text .line-add{margin-top:16px;background:#fff;border-radius:8px;padding:4px}
+.line-qr{width:150px;height:150px;background:#fff;border:3px solid var(--navy);border-radius:14px;padding:6px;flex:none}
+@media (max-width:760px){.line-qr{display:none}.line-inner{display:block}}
