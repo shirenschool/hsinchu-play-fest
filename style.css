@@ -537,3 +537,27 @@ body{
 .line-hero img{height:32px;width:auto}
 .footer-line{margin-top:12px}
 .footer-line .line-add img{height:26px;width:auto}
+
+/* 洪新富講座照片 */
+.talk{margin-top:40px;background:var(--cream);border:3px solid var(--navy);border-radius:var(--r);box-shadow:var(--sticker);padding:clamp(18px,3vw,32px)}
+.talk-kicker{font-weight:900;font-size:14px;color:var(--red);letter-spacing:.08em}
+.talk-head h3{font-weight:900;font-size:clamp(20px,2.6vw,28px);line-height:1.35;margin:4px 0 8px}
+.talk-head p:last-child{max-width:52em;font-size:15px}
+.talk-grid{display:grid;grid-template-columns:1.1fr 1fr 1fr;grid-template-rows:220px 220px;gap:12px;margin-top:20px}
+.talk-photo{position:relative;margin:0;border-radius:14px;overflow:hidden;border:2px solid var(--navy);background:var(--navy)}
+.talk-photo.tall{grid-row:span 2}
+.talk-photo picture,.talk-photo img{display:block;width:100%;height:100%}
+.talk-photo img{object-fit:cover;transition:transform .4s}
+.talk-photo:hover img{transform:scale(1.04)}
+.talk-photo:nth-child(5) img{object-position:50% 30%}
+.talk-photo figcaption{position:absolute;left:8px;bottom:8px;right:8px;width:fit-content;max-width:calc(100% - 16px);background:rgba(35,42,54,.82);color:#fff;font-size:13px;font-weight:700;padding:4px 10px;border-radius:999px;line-height:1.5}
+@media (max-width:760px){
+  .talk-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;margin-left:calc(-1 * clamp(18px,3vw,32px));margin-right:calc(-1 * clamp(18px,3vw,32px));padding:0 clamp(18px,3vw,32px) 6px}
+  .talk-photo{flex:0 0 78%;height:300px;scroll-snap-align:center}
+  .talk-photo.tall{grid-row:auto}
+}
+
+/* 洪新富特展：講座照片拼貼 */
+.feature-photo{background:var(--cream)}
+.feature-photo img{object-position:50% 40%}
+@media (max-width:760px){.feature-photo{aspect-ratio:12/13}}
