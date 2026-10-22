@@ -37,7 +37,7 @@ const SHEET_ID = '1p9QaRXgh4jWC15JXstDckoA6Sv8__j4IwCy6k0thXeo';
     const head = (rows.shift() || []).map(h => h.trim());
     return rows
       .map(r => Object.fromEntries(head.map((h, i) => [h, (r[i] ?? '').trim()])))
-      .filter(r => r['名稱'] || r['內容']);
+      .filter(r => r['名稱'] || r['內容'] || r['標題']);
   }
 
   async function load(name) {
@@ -48,6 +48,16 @@ const SHEET_ID = '1p9QaRXgh4jWC15JXstDckoA6Sv8__j4IwCy6k0thXeo';
     return parseCSV(t).filter(shown);
   }
 
+  // 照片：可填 Google 雲端硬碟分享連結、圖片網址，或上傳到 GitHub images 資料夾的檔名
+  const photoUrl = v => {
+    v = String(v ?? '').trim();
+    if (!v) return '';
+    const drive = v.match(/drive\.google\.com\/(?:file\/d\/|open\?id=|uc\?(?:export=\w+&)?id=)([\w-]{10,})/);
+    if (drive) return `https://drive.google.com/thumbnail?id=${drive[1]}&sz=w1200`;
+    if (/^https?:\/\//i.test(v)) return v;
+    if (/^[\w.-]+\.(jpe?g|png|webp|gif)$/i.test(v)) return 'images/' + v;
+    return '';
+  };
   const COLOR = { 紅: 'red', 紫: 'blue', 黃: 'yellow', 綠: 'navy', 藍: 'sky' };
   const SOLID = { 紅: 'solid-red', 紫: 'solid-navy', 黃: 'solid-yellow', 綠: 'solid-green', 藍: 'solid-blue' };
   const BAR = ['bar-blue', 'bar-yellow', 'bar-red', 'bar-navy'];
@@ -72,6 +82,13 @@ const SHEET_ID = '1p9QaRXgh4jWC15JXstDckoA6Sv8__j4IwCy6k0thXeo';
 
   // ---- 各區塊 ----
   const render = {
+    關於(rows) {
+      const r = rows[0];
+      if (!r || !r['內容']) return;           // 分頁還沒建立或沒填，就維持網頁原本的文字
+      if (r['標題']) document.getElementById('about-title').innerHTML = txt(r['標題']);
+      document.getElementById('about-text').innerHTML = txt(r['內容']);
+    },
+
     公告(rows) {
       const el = document.getElementById('notice');
       const r = rows[0];
@@ -122,6 +139,7 @@ const SHEET_ID = '1p9QaRXgh4jWC15JXstDckoA6Sv8__j4IwCy6k0thXeo';
         const days = /兩/.test(d) || (has14 && has15) || (!has14 && !has15) ? 'd1 d2' : has15 ? 'd2' : 'd1';
         const free = /免費|^0$|^\$0$/.test(r['價格']);
         const link = safeUrl(r['報名連結']);
+        const photo = photoUrl(r['照片']);
         const color = COLOR[r['顏色']] || 'red';
         const dateLabel = /兩/.test(d) ? '兩天皆有' : d;
         const timeLabel = /／/.test(r['時間']) ? '場次' : '時間';
@@ -135,6 +153,7 @@ const SHEET_ID = '1p9QaRXgh4jWC15JXstDckoA6Sv8__j4IwCy6k0thXeo';
             <span class="price">${txt(r['價格'])}${r['單位'] ? `<small>／${txt(r['單位'])}</small>` : ''}</span>
             ${r['標籤'] ? `<span class="badge">${txt(r['標籤'])}</span>` : ''}
           </header>
+          ${photo ? `<div class="class-photo"><img src="${esc(photo)}" alt="${esc(r['名稱'])}" loading="lazy" onerror="this.parentNode.remove()"></div>` : ''}
           <div class="class-body">
             <h3>${txt(r['名稱'])}</h3>
             ${r['副標'] ? `<p class="sub">${txt(r['副標'])}</p>` : ''}

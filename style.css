@@ -588,3 +588,8 @@ body{
 .card-wide{grid-row:span 3}
 .card-grid-4 .card:not(.card-wide){justify-content:center}
 @media (max-width:760px){.card-wide{grid-row:auto}}
+
+/* 課程照片（試算表「照片」欄） */
+.class-photo{aspect-ratio:16/9;overflow:hidden;border-bottom:3px solid var(--navy);background:var(--cream-2)}
+.class-photo img{width:100%;height:100%;object-fit:cover;display:block}
+#about-text{white-space:normal}
